@@ -1,0 +1,13 @@
+services:
+  usage_cron:
+    class: Drupal\usage_cron\UsageCron
+    arguments: ['@module_handler', '@lock', '@queue', '@state', '@account_switcher', '@logger.channel.usage_cron', '@plugin.manager.queue_worker', '@datetime.time']
+    lazy: true
+  usage_cron.subscriber:
+    class: Drupal\usage_cron\EventSubscriber\UsageCronSubscriber
+    arguments: ['@usage_cron', '@config.factory', '@state']
+    tags:
+      - { name: event_subscriber }
+  logger.channel.usage_cron:
+    parent: logger.channel_base
+    arguments: ['usage_cron']

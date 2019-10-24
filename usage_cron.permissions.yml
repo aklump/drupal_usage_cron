@@ -1,0 +1,3 @@
+trigger usage cron:
+  title: 'Trigger usage cron'
+  description: 'Allow a request from this user to trigger the usage cron.'
