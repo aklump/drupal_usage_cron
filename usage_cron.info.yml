@@ -1,6 +1,7 @@
 name: Usage Cron
 description: Process jobs only when the website is being used.
 package: In the Loft Studios
+homepage: https://intheloftstudios.com/packages/drupal/drupal_usage_cron
 
 type: module
 core: 8.x
