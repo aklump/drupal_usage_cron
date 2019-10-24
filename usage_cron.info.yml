@@ -4,4 +4,4 @@ package: 'In the Loft Studios'
 homepage: 'https://intheloftstudios.com/packages/drupal/drupal_usage_cron'
 type: module
 core: 8.x
-version: 8.x-0.0.2
+version: 8.x-0.0.3
