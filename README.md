@@ -1,4 +1,4 @@
-# Usage Cron Drupal Module
+# Usage Cron API Drupal Module
 
 ## Summary
 
@@ -8,7 +8,7 @@ This is in contrast to a system cron which generally runs based on the clock, re
 
 This module differs from the Automated Cron module (which also gets trigger by HTTP requests) in that it does not fire `hook_cron`, but rather `hook_usage_cron` and therefor allows for a different set of tasks to be scheduled to run.
 
-This module does not affect or interact with the normal cron jobs.
+This module does not affect or interact with the normal cron jobs.  Also it is an API and therefore requires another module to make use of it.
 
 ## Configuration
 
