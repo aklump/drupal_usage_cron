@@ -14,7 +14,7 @@ function usage_cron_form_system_cron_settings_alter(&$form, &$form_state) {
     '#open' => TRUE,
   ];
 
-  $options = [900, 1800, 3600, 10800, 21600, 43200, 86400, 604800];
+  $options = [1, 900, 1800, 3600, 10800, 21600, 43200, 86400, 604800];
   $form['usage_cron']['min_interval'] = [
     '#type' => 'select',
     '#title' => t('Run usage cron no more often than every'),
