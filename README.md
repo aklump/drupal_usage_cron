@@ -2,11 +2,13 @@
 
 ## Summary
 
-Fires a cron hook only when the website is receiving requests at no more often than a specified period of time.
+Fires a hook only when the website is receiving requests at no more often than a specified period of time.
 
-This is in contrast to a system cron which runs based on the clock, regardless if the site is being used.  This module was built specifically to allow for backups of the database during development, but only if the site is being used.
+This is in contrast to a system cron which generally runs based on the clock, regardless if the site is being used.  This module was built specifically to allow for backups of the database during development, but only if the site was being used to minimize the backup process and storage.
 
-Differs from the Automated Cron module in that it does not fire `hook_cron` and therefor allows for a different set of tasks.
+This module differs from the Automated Cron module (which also gets trigger by HTTP requests) in that it does not fire `hook_cron`, but rather `hook_usage_cron` and therefor allows for a different set of tasks to be scheduled to run.
+
+This module does not affect or interact with the normal cron jobs.
 
 ## Configuration
 
