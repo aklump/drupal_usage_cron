@@ -23,5 +23,15 @@
  * items that need to be processed to the defined queues.
  */
 function hook_usage_cron() {
-
+  try {
+    \AKlump\LoftLib\Bash\Bash::exec([
+      'cd /app && ./bin/website_backup backup -d --local=/app/private/default/db/purgeable',
+    ]);
+    \Drupal::messenger()
+      ->addMessage("Usage cron has successfully performed a local database-only backup.");
+  }
+  catch (\Exception $exception) {
+    \Drupal::messenger()
+      ->addError("Usage cron failed to perform a local website backup.");
+  }
 }

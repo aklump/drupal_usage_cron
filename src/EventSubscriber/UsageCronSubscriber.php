@@ -6,11 +6,11 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\usage_cron\UsageCronInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\PostResponseEvent;
+use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * A subscriber running hook_usage_cron after a response is sent.
+ * A subscriber running hook_usage_cron after before a response is sent.
  */
 class UsageCronSubscriber implements EventSubscriberInterface {
 
@@ -54,10 +54,10 @@ class UsageCronSubscriber implements EventSubscriberInterface {
   /**
    * Run the automated cron if enabled.
    *
-   * @param \Symfony\Component\HttpKernel\Event\PostResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\KernelEvent $event
    *   The Event to process.
    */
-  public function onTerminate(PostResponseEvent $event) {
+  public function onResponse(KernelEvent $event) {
     $min_interval = $this->config->get('min_interval');
     if ($min_interval > 0 &&
       \Drupal::currentUser()->hasPermission('trigger usage cron')) {
@@ -75,7 +75,7 @@ class UsageCronSubscriber implements EventSubscriberInterface {
    *   An array of event listener definitions.
    */
   public static function getSubscribedEvents() {
-    return [KernelEvents::TERMINATE => [['onTerminate', 100]]];
+    return [KernelEvents::RESPONSE => [['onResponse', 100]]];
   }
 
 }
