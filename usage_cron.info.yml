@@ -3,5 +3,5 @@ description: 'Process jobs only when the website is being used.'
 package: 'In the Loft Studios'
 homepage: 'https://intheloftstudios.com/packages/drupal/drupal_usage_cron'
 type: module
-core_version_requirement: ^8.8 || ^9
-version: 8.x-0.0.4
+core_version_requirement: '^8.8 || ^9'
+version: 8.x-0.0.5
